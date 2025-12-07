@@ -66,7 +66,7 @@ const config: Config = {
           title: 'Docs',
           items: [
             { label: 'Introduction', to: '/docs/intro' },
-            { label: 'Tutorial', to: '/docs/category/tutorial' },
+            { label: 'Prerequisites', to: '/docs/prerequisites' },
           ],
         },
         {
@@ -78,11 +78,9 @@ const config: Config = {
           ],
         },
         {
-          title: 'About',
+          title: 'More',
           items: [
             { label: 'Blog', to: '/blog' },
-            { label: 'Team', to: '/about/team' },
-            { label: 'Contact', to: '/contact' },
           ],
         },
       ],
