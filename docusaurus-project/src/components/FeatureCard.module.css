@@ -1,0 +1,53 @@
+
+.featureCard {
+  text-align: center;
+}
+
+.card {
+  background: linear-gradient(to bottom right, #0E0E10, #151515);
+  border: 1px solid rgba(2, 210, 242, 0.2); 
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 90%; 
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 20px rgba(2, 210, 242, 0.6); 
+}
+
+.cardHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(2, 210, 242, 0.1);
+}
+
+.featureIcon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-secondary);
+  transition: color 0.3s ease;
+}
+
+.card:hover .featureIcon {
+  color: var(--ifm-color-secondary-light); 
+}
+
+.featureTitle {
+  color: var(--ifm-color-secondary); 
+  font-weight: var(--ifm-heading-font-weight);
+  letter-spacing: var(--ifm-heading-letter-spacing);
+  font-size: var(--ifm-h3-font-size);
+  margin-bottom: 0;
+}
+
+.cardBody {
+  padding: 1.5rem;
+}
+
+.featureDescription {
+  color: var(--ifm-text-color-base); 
+  font-family: var(--ifm-font-family-base);
+  font-size: 1rem;
+  line-height: 1.5;
+}

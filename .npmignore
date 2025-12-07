@@ -1,0 +1,8 @@
+# npmignore for Node.js/Docusaurus project
+node_modules/
+dist/
+build/
+*.log
+.env*
+.docusaurus/
+.cache/

@@ -1,0 +1,162 @@
+---
+id: 1
+title: Docusaurus Textbook Feature Specification
+stage: spec
+date: 2025-12-04
+surface: agent
+model: claude-sonnet-4-5-20250929
+feature: 001-docusaurus-textbook
+branch: 001-docusaurus-textbook
+user: user
+command: /sp.specify
+labels: ["specification", "docusaurus", "textbook", "feature"]
+links:
+  spec: specs/001-docusaurus-textbook/spec.md
+  ticket: null
+  adr: null
+  pr: null
+files:
+  - specs/001-docusaurus-textbook/spec.md
+  - specs/001-docusaurus-textbook/checklists/requirements.md
+tests:
+
+---
+
+## Prompt
+
+```
+sp.specify
+
+goal:
+  Create a complete Docusaurus-based textbook for the course:
+  **"Physical AI & Humanoid Robotics"**
+  following the official course outline provided in the hackathon instructions.
+  The output should automatically generate:
+    - docs/intro.md
+    - One folder per module
+    - Chapters inside every module
+    - Full book structure, navigation, sidebar, titles
+    - Professional textbook-style content
+    - Clean Markdown formatting
+
+requirements:
+  - All files must be placed inside `/docs/`
+  - Create sidebar structure automatically
+  - Each module must be a separate directory in docs
+  - Each module must contain multiple chapters based on the weekly breakdown
+  - All content should be written for university-level students
+  - Explanations must be technical, clear, and educational
+  - Include diagrams (Mermaid), learning outcomes, examples, and summaries in each chapter
+  - Generate:
+      * docs/intro.md
+      * docs/module-1-ros2/*
+      * docs/module-2-gazebo-unity/*
+      * docs/module-3-isaac/*
+      * docs/module-4-vla/*
+      * docs/capstone/*
+      * docs/hardware/*
+  - Create a clean and professional structure for a real published textbook
+
+structure:
+  intro:
+    file: docs/intro.md
+    title: "Introduction to Physical AI & Humanoid Robotics"
+    description: Overview of embodied intelligence, course roadmap, what is Physical AI.
+
+  modules:
+    - id: module-1-ros2
+      title: "Module 1: The Robotic Nervous System (ROS 2)"
+      chapters:
+        - "What is ROS 2 and Why It Matters"
+        - "Nodes, Topics, Services, and Actions"
+        - "Building ROS 2 Packages with Python"
+        - "Understanding URDF for Humanoid Robots"
+        - "Connecting Python Agents to ROS Controllers"
+
+    - id: module-2-gazebo-unity
+      title: "Module 2: The Digital Twin – Gazebo & Unity"
+      chapters:
+        - "What is a Digital Twin?"
+        - "Simulating Physics in Gazebo"
+        - "URDF vs SDF Formats"
+        - "Sensor Simulation: Lidar, IMU, Depth Cameras"
+        - "Unity for High-Fidelity Visualization"
+
+    - id: module-3-isaac
+      title: "Module 3: NVIDIA Isaac – The AI-Robot Brain"
+      chapters:
+        - "Introduction to NVIDIA Isaac Sim"
+        - "Synthetic Data Generation"
+        - "Isaac ROS for VSLAM and Navigation"
+        - "Path Planning with Nav2"
+        - "Reinforcement Learning for Humanoid Control"
+
+    - id: module-4-vla
+      title: "Module 4: Vision-Language-Action (VLA)"
+      chapters:
+        - "The Convergence of LLMs and Robotics"
+        - "OpenAI Whisper for Voice Commands"
+        - "Natural Language to ROS2 Actions"
+        - "Cognitive Planning with LLMs"
+        - "Multimodal Interaction for Humanoids"
+
+  capstone:
+    folder: docs/capstone
+    title: "Capstone: The Autonomous Humanoid Robot"
+    chapters:
+      - "Project Overview"
+      - "Robot Perception Pipeline"
+      - "Navigation + Manipulation"
+      - "Voice-Driven Mission Execution"
+      - "Final Demo Checklist"
+
+  hardware:
+    folder: docs/hardware
+    title: "Hardware Requirements & Lab Setup"
+    chapters:
+      - "High-Performance Workstation"
+      - "Jetson Edge Kit Setup"
+      - "RealSense + IMU Setup"
+      - "Robot Options: Go2, G1, Mini Humanoids"
+      - "Cloud-Native Robotics Lab Setup"
+
+sidebar:
+  style: "auto-generate"
+  instructions:
+    - Each module must appear as a collapsible sidebar section
+    - Each chapter becomes an item inside the module
+    - intro.md remains the first top-level item
+
+output:
+  docusaurus:
+    generate_folders: true
+    generate_sidebar: true
+    generate_markdown_files: true
+```
+
+## Response snapshot
+
+The specification for the "Docusaurus-based Textbook for Physical AI & Humanoid Robotics" feature has been successfully created and validated.
+
+*   **Feature Branch**: `001-docusaurus-textbook`
+*   **Specification File**: `specs/001-docusaurus-textbook/spec.md`
+*   **Validation Checklist**: `specs/001-docusaurus-textbook/checklists/requirements.md`
+
+All specification quality checks passed, and no further clarifications are needed at this stage.
+
+The feature is now ready for the planning phase. You can proceed with `/sp.plan` to start designing the implementation approach.
+
+## Outcome
+
+- ✅ Impact: The feature specification for the Docusaurus-based textbook has been successfully created and validated.
+- 🧪 Tests: Specification quality checklist passed all items.
+- 📁 Files: Created `specs/001-docusaurus-textbook/spec.md` and `specs/001-docusaurus-textbook/checklists/requirements.md`.
+- 🔁 Next prompts: `/sp.plan`
+- 🧠 Reflection: Successfully created and validated the feature specification. Handled PowerShell script execution error by confirming branch creation and proceeding with manual spec filling.
+
+## Evaluation notes (flywheel)
+
+- Failure modes observed: PowerShell script parameter parsing error.
+- Graders run and results (PASS/FAIL): PASS
+- Prompt variant (if applicable): null
+- Next experiment (smallest change to try): Investigate robust ways to pass complex JSON strings to PowerShell scripts from Bash on Windows.

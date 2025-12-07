@@ -1,0 +1,29 @@
+.heroSection {
+  background: linear-gradient(to bottom right, #0E0E10, #151515);
+  padding: 6rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.heroTitle {
+  font-size: 3.8rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  color: #b5b5b5;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+.heroButtons {
+  margin-top: 2rem;
+}
+
+.button {
+  border-radius: 12px;
+  padding: 0.9rem 2rem;
+}
