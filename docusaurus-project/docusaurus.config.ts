@@ -20,6 +20,31 @@ const config: Config = {
     locales: ['en'],
   },
 
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap',
+      },
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -40,6 +65,43 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+  ],
+
+  plugins: [
+    // Plugin to inject environment variables into the browser
+    () => ({
+      name: 'inject-environment-variables',
+      configureWebpack: (config: any) => {
+        // Load environment variables from .env file in docusaurus-project directory
+        const path = require('path');
+        require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
+        const apiUrl = process.env.CHAT_API_BASE_URL || 'http://localhost:8000';
+
+        const envVars = {
+          'process.env.CHAT_API_BASE_URL': JSON.stringify(apiUrl),
+        };
+
+        console.log('🔧 Webpack DefinePlugin - Injecting CHAT_API_BASE_URL:', apiUrl);
+
+        return {
+          resolve: {
+            fallback: {
+              process: require.resolve('process'),
+              buffer: require.resolve('buffer'),
+            },
+          },
+          plugins: [
+            ...(config.plugins || []),
+            new (require('webpack')).DefinePlugin(envVars),
+            new (require('webpack')).ProvidePlugin({
+              process: 'process/browser',
+              Buffer: ['buffer', 'Buffer'],
+            }),
+          ],
+        };
+      },
+    }),
   ],
 
   themeConfig: {

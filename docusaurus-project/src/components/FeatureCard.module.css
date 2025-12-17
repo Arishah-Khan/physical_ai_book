@@ -1,53 +1,85 @@
-
 .featureCard {
   text-align: center;
 }
 
 .card {
-  background: linear-gradient(to bottom right, #0E0E10, #151515);
-  border: 1px solid rgba(2, 210, 242, 0.2); 
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 90%; 
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 16px;
+  transition: all var(--animation-normal) var(--easing-smooth);
+  height: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+  opacity: 0.5;
 }
 
 .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 0 20px rgba(2, 210, 242, 0.6); 
+  transform: translateY(-8px);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: var(--shadow-xl), var(--glow-indigo-md);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='light'] .card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme='light'] .card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--shadow-xl), 0 0 20px rgba(99, 102, 241, 0.15);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .cardHeader {
-  padding: 1.5rem;
-  border-bottom: 1px solid rgba(2, 210, 242, 0.1);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .featureIcon {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 1rem;
-  color: var(--ifm-color-secondary);
-  transition: color 0.3s ease;
+  width: 70px;
+  height: 70px;
+  margin-bottom: var(--spacing-md);
+  color: var(--ifm-color-primary);
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+  transition: all var(--animation-normal) var(--easing-smooth);
 }
 
 .card:hover .featureIcon {
-  color: var(--ifm-color-secondary-light); 
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
 }
 
 .featureTitle {
-  color: var(--ifm-color-secondary); 
-  font-weight: var(--ifm-heading-font-weight);
-  letter-spacing: var(--ifm-heading-letter-spacing);
-  font-size: var(--ifm-h3-font-size);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: var(--ifm-font-size-xl);
   margin-bottom: 0;
 }
 
 .cardBody {
-  padding: 1.5rem;
+  padding: var(--spacing-lg);
 }
 
 .featureDescription {
-  color: var(--ifm-text-color-base); 
+  color: var(--ifm-text-color-secondary);
   font-family: var(--ifm-font-family-base);
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: var(--ifm-font-size-normal);
+  line-height: 1.7;
 }
