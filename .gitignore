@@ -7,6 +7,23 @@ build/
 .docusaurus/
 .cache/
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+
 # Universal ignore patterns
 .DS_Store
 Thumbs.db

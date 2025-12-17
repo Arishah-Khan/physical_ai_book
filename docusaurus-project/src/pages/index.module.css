@@ -1,29 +1,86 @@
 .heroSection {
-  background: linear-gradient(to bottom right, #0E0E10, #151515);
-  padding: 6rem 2rem;
+  background:
+    radial-gradient(
+      ellipse 100% 60% at 50% -20%,
+      rgba(99, 102, 241, 0.25),
+      rgba(6, 182, 212, 0.15),
+      transparent
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(139, 92, 246, 0.15),
+      transparent
+    );
+  padding: var(--spacing-4xl) var(--spacing-xl);
   text-align: center;
-  border-bottom: 1px solid #2a2a2a;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.4;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+}
+
+[data-theme='light'] .heroSection {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(79, 70, 229, 0.08) 0%,
+      rgba(6, 182, 212, 0.08) 50%,
+      rgba(139, 92, 246, 0.08) 100%
+    );
 }
 
 .heroTitle {
-  font-size: 3.8rem;
+  font-size: var(--ifm-font-size-hero);
   font-weight: 800;
-  margin-bottom: 1.2rem;
-  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.4));
+}
+
+[data-theme='light'] .heroTitle {
+  filter: none;
 }
 
 .heroSubtitle {
-  font-size: 1.3rem;
-  color: #b5b5b5;
-  max-width: 700px;
-  margin: 0 auto 2rem auto;
+  font-size: var(--ifm-font-size-large);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ifm-text-color-secondary);
+  max-width: 650px;
+  margin: 0 auto var(--spacing-2xl);
+  position: relative;
+  z-index: 1;
 }
 
 .heroButtons {
-  margin-top: 2rem;
+  margin-top: var(--spacing-xl);
+  position: relative;
+  z-index: 1;
 }
 
 .button {
-  border-radius: 12px;
-  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  padding: 12px 28px;
 }

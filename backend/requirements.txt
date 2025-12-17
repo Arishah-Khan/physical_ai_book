@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+qdrant-client
+google-generativeai
+pydantic
+pydantic-settings
+python-dotenv
+tiktoken
+beautifulsoup4
+numpy
+pytest
+httpx
+PyYAML
+openai
+openai-agents
